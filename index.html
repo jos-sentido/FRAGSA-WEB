@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="FRAGSA — Grupo Integral. Soluciones integrales en construcción industrial, comercial y residencial. Más de 30 años de trayectoria en México." />
+    <meta property="og:title" content="FRAGSA | Soluciones Integrales en Construcción" />
+    <meta property="og:description" content="Grupo constructor con +30 años. Ingeniería, estructura, construcción, operación y gestión integral." />
+    <meta property="og:type" content="website" />
+    <title>FRAGSA | Soluciones Integrales en Construcción</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="/brand/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/brand/favicon-16.png" />
+    <link rel="shortcut icon" href="/brand/favicon.ico" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              fragsa: {
+                navy: '#1B2B4A',
+                blue: '#4E7BB0',
+                ink: '#0E1116',
+                graphite: '#2A2E35',
+                steel: '#8A8F98',
+                line: '#D9DCE1',
+                mist: '#F3F4F6',
+                paper: '#FFFFFF',
+                asphalt: '#111418',
+              }
+            },
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+              display: ['Montserrat', 'sans-serif'],
+            },
+            letterSpacing: {
+              'widest-xl': '0.25em',
+              'widest-2xl': '0.35em',
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      html, body {
+        background-color: #FFFFFF;
+        color: #0E1116;
+      }
+      body {
+        font-family: 'Inter', sans-serif;
+        -webkit-font-smoothing: antialiased;
+      }
+      /* Custom scrollbar */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #F3F4F6;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #D9DCE1;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #1B2B4A;
+      }
+      .fade-in {
+        animation: fadeIn 1s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .slide-up {
+        animation: slideUp 1s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
+      @keyframes slideUp {
+        from { opacity: 0; transform: translateY(40px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      .vertical-text {
+        writing-mode: vertical-rl;
+        text-orientation: mixed;
+      }
+      .photo-bw {
+        filter: grayscale(100%) contrast(1.05);
+      }
+      .reveal {
+        opacity: 0;
+        transform: translateY(32px);
+        transition: opacity 900ms cubic-bezier(0.16, 1, 0.3, 1), transform 900ms cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .reveal.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^18.3.1",
+    "react-dom/": "https://esm.sh/react-dom@^18.3.1/",
+    "react/": "https://esm.sh/react@^18.3.1/",
+    "lucide-react": "https://esm.sh/lucide-react@^0.363.0",
+    "react-router-dom": "https://esm.sh/react-router-dom@^6.22.3"
+  }
+}
+</script>
+</head>
+  <body class="antialiased selection:bg-fragsa-navy selection:text-white">
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
