@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { NavLink as RouterLink, useLocation, Link } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { NAV_LINKS } from '../constants';
@@ -7,6 +7,8 @@ const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
+  const toggleRef = useRef<HTMLButtonElement | null>(null);
+  const panelRef = useRef<HTMLDivElement | null>(null);
 
   // Rutas que arrancan con hero oscuro (logo/links en blanco cuando aún no hay scroll)
   const onDarkHero = location.pathname === '/';
@@ -25,6 +27,21 @@ const Navbar: React.FC = () => {
   useEffect(() => {
     document.body.style.overflow = isOpen ? 'hidden' : 'unset';
     return () => { document.body.style.overflow = 'unset'; };
+  }, [isOpen]);
+
+  useEffect(() => {
+    if (!isOpen) return;
+    const firstLink = panelRef.current?.querySelector<HTMLElement>('a, button');
+    firstLink?.focus();
+
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setIsOpen(false);
+        toggleRef.current?.focus();
+      }
+    };
+    window.addEventListener('keydown', onKeyDown);
+    return () => window.removeEventListener('keydown', onKeyDown);
   }, [isOpen]);
 
   const containerCls = transparent
@@ -71,9 +88,12 @@ const Navbar: React.FC = () => {
 
           {/* Mobile button */}
           <button
-            className={`md:hidden relative z-50 ${mobileBtnColor}`}
+            ref={toggleRef}
+            className={`md:hidden relative z-50 p-2 -mr-2 ${mobileBtnColor}`}
             onClick={() => setIsOpen(!isOpen)}
             aria-label={isOpen ? 'Cerrar menú' : 'Abrir menú'}
+            aria-expanded={isOpen}
+            aria-controls="mobile-menu"
           >
             {isOpen ? <X size={24} strokeWidth={1.5} /> : <Menu size={24} strokeWidth={1.5} />}
           </button>
@@ -82,9 +102,20 @@ const Navbar: React.FC = () => {
 
       {/* Mobile overlay */}
       <div
-        className={`fixed inset-0 bg-fragsa-paper z-40 flex flex-col items-center justify-start pt-28 pb-10 px-6 space-y-8 transition-transform duration-500 ease-in-out md:hidden ${
-          isOpen ? 'translate-x-0' : 'translate-x-full'
-        }`}
+        ref={panelRef}
+        id="mobile-menu"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Menú de navegación"
+        aria-hidden={!isOpen}
+        className="fixed inset-0 bg-fragsa-paper z-40 flex flex-col items-center justify-start pt-28 pb-10 px-6 space-y-8 md:hidden"
+        style={{
+          transform: isOpen ? 'translateX(0%)' : 'translateX(100%)',
+          transition: 'transform 400ms cubic-bezier(0.16, 1, 0.3, 1)',
+          visibility: isOpen ? 'visible' : 'hidden',
+          transitionProperty: 'transform, visibility',
+          transitionDuration: '400ms',
+        }}
       >
         {NAV_LINKS.map((link) => (
           <RouterLink

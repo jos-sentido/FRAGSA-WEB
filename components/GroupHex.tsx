@@ -24,7 +24,7 @@ const GroupHex: React.FC<GroupHexProps> = ({ company }) => {
         {company.description}
       </p>
       <div className="mt-auto pt-4">
-        <img src="/brand/glifo-fragsa-navy.png" alt="" aria-hidden="true" className="w-10 h-10 opacity-15" />
+        <img src="/brand/glifo-fragsa-navy.png" alt="" aria-hidden="true" loading="lazy" decoding="async" className="w-10 h-10 opacity-15" />
       </div>
     </div>
   );

@@ -12,6 +12,7 @@ const About: React.FC = () => {
       {/* HERO */}
       <section className="relative pt-36 pb-24 md:pt-44 md:pb-32 bg-fragsa-paper overflow-hidden">
         <img src="/brand/glifo-fragsa-navy.png" alt="" aria-hidden="true"
+             loading="lazy" decoding="async"
              className="absolute right-0 top-10 w-72 md:w-[28rem] opacity-[0.05]" />
         <div className="max-w-[1280px] mx-auto px-6 md:px-10">
           <Reveal><Eyebrow>Nosotros</Eyebrow></Reveal>

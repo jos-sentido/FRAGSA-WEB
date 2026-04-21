@@ -24,7 +24,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, featured = false }) 
           />
         ) : (
           <div className="w-full h-full flex items-center justify-center" style={{ background: placeholderBg }}>
-            <img src="/brand/glifo-fragsa-navy.png" alt="" aria-hidden="true" className="w-20 h-20 opacity-10" />
+            <img src="/brand/glifo-fragsa-navy.png" alt="" aria-hidden="true" loading="lazy" decoding="async" className="w-20 h-20 opacity-10" />
           </div>
         )}
         {inProgress && (

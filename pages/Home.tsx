@@ -23,21 +23,29 @@ const Home: React.FC = () => {
       {/* HERO */}
       <section className="relative min-h-screen bg-fragsa-asphalt text-fragsa-paper overflow-hidden flex items-end pt-32 pb-20">
         <div className="absolute inset-0 opacity-40">
+          <img
+            src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&fm=webp&w=1600&q=70"
+            srcSet="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&fm=webp&w=800&q=70 800w, https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&fm=webp&w=1600&q=70 1600w, https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&fm=webp&w=2400&q=75 2400w"
+            sizes="100vw"
+            alt=""
+            aria-hidden="true"
+            fetchPriority="high"
+            decoding="async"
+            className="w-full h-full object-cover"
+            style={{ filter: 'grayscale(100%) contrast(1.1)' }}
+          />
           <div
-            className="w-full h-full"
-            style={{
-              backgroundImage:
-                'linear-gradient(135deg, rgba(27,43,74,0.65) 0%, rgba(17,20,24,0.92) 100%), url("https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=2400&q=80")',
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-              filter: 'grayscale(100%) contrast(1.1)',
-            }}
+            className="absolute inset-0"
+            style={{ backgroundImage: 'linear-gradient(135deg, rgba(27,43,74,0.65) 0%, rgba(17,20,24,0.92) 100%)' }}
+            aria-hidden="true"
           />
         </div>
         <img
           src="/brand/glifo-fragsa-white.png"
           alt=""
           aria-hidden="true"
+          loading="lazy"
+          decoding="async"
           className="absolute -right-10 -top-10 md:right-10 md:top-24 w-72 md:w-[28rem] opacity-[0.06]"
         />
 
@@ -172,6 +180,8 @@ const Home: React.FC = () => {
           src="/brand/glifo-fragsa-white.png"
           alt=""
           aria-hidden="true"
+          loading="lazy"
+          decoding="async"
           className="absolute right-6 md:right-20 top-1/2 -translate-y-1/2 w-48 md:w-72 opacity-[0.05]"
         />
         <div className="max-w-[1280px] mx-auto px-6 md:px-10 relative">

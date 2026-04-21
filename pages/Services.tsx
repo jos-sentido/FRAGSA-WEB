@@ -12,6 +12,7 @@ const Services: React.FC = () => {
       {/* HERO */}
       <section className="relative pt-36 pb-24 md:pt-44 md:pb-32 bg-fragsa-paper overflow-hidden">
         <img src="/brand/glifo-fragsa-navy.png" alt="" aria-hidden="true"
+             loading="lazy" decoding="async"
              className="absolute right-0 top-10 w-72 md:w-[28rem] opacity-[0.05]" />
         <div className="max-w-[1280px] mx-auto px-6 md:px-10">
           <Reveal><Eyebrow>Servicios</Eyebrow></Reveal>
@@ -85,6 +86,7 @@ const Services: React.FC = () => {
       {/* CTA */}
       <section className="relative bg-fragsa-asphalt text-fragsa-paper py-24 md:py-28 overflow-hidden">
         <img src="/brand/glifo-fragsa-white.png" alt="" aria-hidden="true"
+             loading="lazy" decoding="async"
              className="absolute right-6 md:right-20 top-1/2 -translate-y-1/2 w-48 md:w-72 opacity-[0.05]" />
         <div className="max-w-[1280px] mx-auto px-6 md:px-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative">
           <div className="lg:col-span-8">
