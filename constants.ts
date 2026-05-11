@@ -16,7 +16,7 @@ export const NAV_LINKS: NavLink[] = [
 ];
 
 export const CONTACT = {
-  email: 'dguarro@fraguaconstructora.com.mx',
+  email: 'contacto@fragsa.mx',
   city: 'Guadalajara, Jalisco',
   country: 'México',
 };
