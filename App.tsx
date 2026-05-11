@@ -2,6 +2,8 @@ import React from 'react';
 import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import PageTransition from './components/PageTransition';
+import CustomCursor from './components/CustomCursor';
 import Home from './pages/Home';
 import About from './pages/About';
 import Services from './pages/Services';
@@ -22,16 +24,19 @@ const App: React.FC = () => {
   return (
     <Router>
       <ScrollToTop />
+      <CustomCursor />
       <div className="flex flex-col min-h-screen font-sans bg-fragsa-paper text-fragsa-ink">
         <Navbar />
         <main className="flex-grow">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/nosotros" element={<About />} />
-            <Route path="/servicios" element={<Services />} />
-            <Route path="/proyectos" element={<Projects />} />
-            <Route path="/contacto" element={<Contact />} />
-          </Routes>
+          <PageTransition>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/nosotros" element={<About />} />
+              <Route path="/servicios" element={<Services />} />
+              <Route path="/proyectos" element={<Projects />} />
+              <Route path="/contacto" element={<Contact />} />
+            </Routes>
+          </PageTransition>
         </main>
         <Footer />
       </div>

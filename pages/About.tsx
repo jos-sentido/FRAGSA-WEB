@@ -4,6 +4,7 @@ import SectionHeader from '../components/SectionHeader';
 import GroupHex from '../components/GroupHex';
 import CoverageMap from '../components/CoverageMap';
 import Reveal from '../components/Reveal';
+import Counter from '../components/Counter';
 import { GROUP_COMPANIES, COVERAGE_STATES } from '../constants';
 
 const About: React.FC = () => {
@@ -31,7 +32,7 @@ const About: React.FC = () => {
             <Reveal><Eyebrow>01 · Quiénes somos</Eyebrow></Reveal>
             <Reveal delay={120}>
               <div className="mt-10 flex items-baseline gap-6">
-                <span className="font-display font-extrabold text-7xl md:text-8xl text-fragsa-navy tabular-nums leading-none">1989</span>
+                <span className="font-display font-extrabold text-7xl md:text-8xl text-fragsa-navy tabular-nums leading-none"><Counter value="1989" duration={1800} /></span>
                 <span className="text-[11px] uppercase tracking-widest-xl text-fragsa-steel max-w-[15ch]">Año de fundación en Guadalajara</span>
               </div>
             </Reveal>
@@ -109,7 +110,7 @@ const About: React.FC = () => {
             </Reveal>
             <Reveal delay={240}>
               <div className="flex items-baseline gap-4">
-                <span className="font-display font-extrabold text-6xl md:text-7xl text-fragsa-navy tabular-nums">14+</span>
+                <span className="font-display font-extrabold text-6xl md:text-7xl text-fragsa-navy tabular-nums"><Counter value="14+" /></span>
                 <span className="text-[11px] uppercase tracking-widest-xl text-fragsa-steel">Estados con obra activa</span>
               </div>
             </Reveal>

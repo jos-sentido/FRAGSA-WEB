@@ -3,6 +3,7 @@ import Eyebrow from '../components/Eyebrow';
 import ProjectCard from '../components/ProjectCard';
 import Reveal from '../components/Reveal';
 import Button from '../components/Button';
+import Counter from '../components/Counter';
 import { PROJECTS, STRATEGIC_COLLABORATIONS } from '../constants';
 import { ProjectCategory } from '../types';
 
@@ -33,7 +34,7 @@ const Projects: React.FC = () => {
           </Reveal>
           <Reveal delay={240}>
             <p className="text-lg text-fragsa-graphite leading-relaxed max-w-[55ch] mt-8">
-              Más de <span className="font-display font-semibold text-fragsa-navy tabular-nums">$1,600 millones MXN</span> en proyectos industriales ejecutados y en ejecución.
+              Más de <span className="font-display font-semibold text-fragsa-navy tabular-nums"><Counter value="$1,600" /> millones MXN</span> en proyectos industriales ejecutados y en ejecución.
             </p>
           </Reveal>
         </div>
@@ -67,7 +68,7 @@ const Projects: React.FC = () => {
         <div className="max-w-[1280px] mx-auto px-6 md:px-10">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filtered.map((p, i) => (
-              <Reveal key={p.id} delay={(i % 3) * 100}>
+              <Reveal key={p.id} delay={(i % 6) * 80} scale>
                 <ProjectCard project={p} />
               </Reveal>
             ))}
@@ -89,7 +90,7 @@ const Projects: React.FC = () => {
               <Reveal key={c.description} delay={i * 100}>
                 <div className="border-t border-fragsa-navy pt-8 flex flex-col gap-4">
                   <div className="flex items-baseline gap-3">
-                    <span className="font-display font-extrabold text-6xl md:text-7xl text-fragsa-navy tabular-nums leading-none">{c.figure}</span>
+                    <span className="font-display font-extrabold text-6xl md:text-7xl text-fragsa-navy tabular-nums leading-none"><Counter value={c.figure} /></span>
                     <span className="text-[11px] uppercase tracking-widest-xl text-fragsa-steel">{c.label}</span>
                   </div>
                   <p className="text-base text-fragsa-graphite leading-relaxed">{c.description}</p>

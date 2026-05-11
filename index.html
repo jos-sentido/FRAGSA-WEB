@@ -96,6 +96,15 @@
         opacity: 1;
         transform: translateY(0);
       }
+      .reveal.reveal-scale {
+        transform: translateY(32px) scale(0.96);
+      }
+      .reveal.reveal-scale.is-visible {
+        transform: translateY(0) scale(1);
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .reveal, .reveal.reveal-scale { opacity: 1; transform: none; transition: none; }
+      }
     </style>
   <script type="importmap">
 {

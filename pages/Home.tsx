@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import Eyebrow from '../components/Eyebrow';
@@ -18,19 +18,47 @@ const Home: React.FC = () => {
     PROJECTS.find(p => p.id === 4)!,
   ];
 
+  // Parallax: subtle vertical translation of hero background on scroll.
+  const heroBgRef = useRef<HTMLDivElement | null>(null);
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduceMotion) return;
+    let rafId = 0;
+    const update = () => {
+      rafId = 0;
+      const y = window.scrollY;
+      if (heroBgRef.current && y < window.innerHeight * 1.2) {
+        heroBgRef.current.style.transform = `translate3d(0, ${y * 0.3}px, 0)`;
+      }
+    };
+    const onScroll = () => {
+      if (!rafId) rafId = requestAnimationFrame(update);
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      if (rafId) cancelAnimationFrame(rafId);
+    };
+  }, []);
+
   return (
     <div>
       {/* HERO */}
       <section className="relative min-h-screen bg-fragsa-asphalt text-fragsa-paper overflow-hidden flex items-end pt-32 pb-20">
-        <div className="absolute inset-0 opacity-40">
+        <div
+          ref={heroBgRef}
+          className="absolute left-0 right-0 opacity-40 will-change-transform"
+          style={{ top: '-15%', height: '130%' }}
+        >
           <img
             src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&fm=webp&w=1600&q=70"
             srcSet="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&fm=webp&w=800&q=70 800w, https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&fm=webp&w=1600&q=70 1600w, https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&fm=webp&w=2400&q=75 2400w"
             sizes="100vw"
             alt=""
             aria-hidden="true"
-            fetchPriority="high"
             decoding="async"
+            {...({ fetchpriority: 'high' } as any)}
             className="w-full h-full object-cover"
             style={{ filter: 'grayscale(100%) contrast(1.1)' }}
           />
@@ -149,7 +177,7 @@ const Home: React.FC = () => {
           </Reveal>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16">
             {featured.map((p, i) => (
-              <Reveal key={p.id} delay={i * 100}>
+              <Reveal key={p.id} delay={i * 100} scale>
                 <ProjectCard project={p} featured />
               </Reveal>
             ))}

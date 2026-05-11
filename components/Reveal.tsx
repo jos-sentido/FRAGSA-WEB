@@ -5,9 +5,11 @@ interface RevealProps {
   delay?: number;
   className?: string;
   as?: keyof JSX.IntrinsicElements;
+  /** If true, also scale from 0.96 to 1 on enter. */
+  scale?: boolean;
 }
 
-const Reveal: React.FC<RevealProps> = ({ children, delay = 0, className = '', as: Tag = 'div' }) => {
+const Reveal: React.FC<RevealProps> = ({ children, delay = 0, className = '', as: Tag = 'div', scale = false }) => {
   const ref = useRef<HTMLElement | null>(null);
   const [visible, setVisible] = useState(false);
 
@@ -33,7 +35,7 @@ const Reveal: React.FC<RevealProps> = ({ children, delay = 0, className = '', as
   return (
     <Component
       ref={ref as any}
-      className={`reveal ${visible ? 'is-visible' : ''} ${className}`}
+      className={`reveal ${visible ? 'is-visible' : ''} ${scale ? 'reveal-scale' : ''} ${className}`}
     >
       {children}
     </Component>
