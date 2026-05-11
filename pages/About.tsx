@@ -5,6 +5,7 @@ import GroupHex from '../components/GroupHex';
 import CoverageMap from '../components/CoverageMap';
 import Reveal from '../components/Reveal';
 import Counter from '../components/Counter';
+import TriangleBullet from '../components/TriangleBullet';
 import { GROUP_COMPANIES, COVERAGE_STATES } from '../constants';
 
 const About: React.FC = () => {
@@ -118,7 +119,7 @@ const About: React.FC = () => {
               <ul className="grid grid-cols-2 gap-2 mt-4 text-sm text-fragsa-graphite">
                 {COVERAGE_STATES.map(s => (
                   <li key={s.code} className="flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-fragsa-blue"></span>
+                    <TriangleBullet className="w-3 h-2.5 text-fragsa-blue flex-shrink-0" />
                     {s.name}
                   </li>
                 ))}

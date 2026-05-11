@@ -1,5 +1,6 @@
 import React from 'react';
 import { ServiceItem } from '../types';
+import TriangleBullet from './TriangleBullet';
 
 interface ServiceBlockProps {
   service: ServiceItem;
@@ -29,7 +30,7 @@ const ServiceBlock: React.FC<ServiceBlockProps> = ({ service, compact = false })
       <ul className="md:col-span-5 grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3 self-center">
         {service.bullets.map((b) => (
           <li key={b} className="flex items-start gap-3 text-sm text-fragsa-graphite">
-            <span className="w-4 h-px bg-fragsa-blue mt-2.5 flex-shrink-0" aria-hidden="true"></span>
+            <TriangleBullet className="w-3.5 h-3 mt-1 text-fragsa-blue flex-shrink-0" />
             <span>{b}</span>
           </li>
         ))}

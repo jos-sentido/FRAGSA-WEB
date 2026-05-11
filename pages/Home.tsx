@@ -75,34 +75,56 @@ const Home: React.FC = () => {
             </div>
           </div>
 
-          {/* IMAGE SIDE */}
-          <div className="lg:col-span-5 relative bg-fragsa-asphalt order-1 lg:order-2 h-[28vh] min-h-[200px] max-h-[260px] lg:h-auto lg:min-h-0 lg:max-h-none">
-            <div ref={heroBgRef} className="absolute inset-0 will-change-transform">
-              <img
-                src="/brand/hero-fragsa-1200w.webp"
-                srcSet="/brand/hero-fragsa-800w.webp 800w, /brand/hero-fragsa-1200w.webp 1200w, /brand/hero-fragsa-1600w.webp 1600w"
-                sizes="(min-width: 1024px) 60vw, 100vw"
-                alt=""
-                aria-hidden="true"
-                decoding="async"
-                {...({ fetchpriority: 'high' } as any)}
-                className="w-full h-full object-cover"
-                style={{ filter: 'grayscale(100%) contrast(1.08)' }}
-              />
+          {/* IMAGE SIDE — layered cutout effect (buildings appear to break out of frame) */}
+          <div className="lg:col-span-5 relative order-1 lg:order-2 h-[30vh] min-h-[220px] max-h-[300px] lg:h-auto lg:min-h-0 lg:max-h-none flex items-center justify-center px-4 sm:px-6 lg:px-6 xl:px-10 lg:py-10">
+            {/* Frame with shadow + slight 3D tilt at lg+ */}
+            <div
+              className="relative w-full h-full overflow-hidden bg-fragsa-asphalt shadow-[0_24px_60px_-20px_rgba(11,17,30,0.45)] lg:[transform:perspective(1400px)_rotateY(-3deg)_rotateX(1.2deg)]"
+            >
+              <div ref={heroBgRef} className="absolute inset-0 will-change-transform">
+                <img
+                  src="/brand/hero-fragsa-1200w.webp"
+                  srcSet="/brand/hero-fragsa-800w.webp 800w, /brand/hero-fragsa-1200w.webp 1200w, /brand/hero-fragsa-1600w.webp 1600w"
+                  sizes="(min-width: 1024px) 45vw, 100vw"
+                  alt=""
+                  aria-hidden="true"
+                  decoding="async"
+                  {...({ fetchpriority: 'high' } as any)}
+                  className="w-full h-full object-cover"
+                  style={{ filter: 'grayscale(100%) contrast(1.08)' }}
+                />
+              </div>
               <div
                 className="absolute inset-0"
-                style={{ backgroundImage: 'linear-gradient(180deg, rgba(255,255,255,0) 40%, rgba(27,43,74,0.25) 100%)' }}
+                style={{ backgroundImage: 'linear-gradient(180deg, rgba(255,255,255,0) 55%, rgba(27,43,74,0.22) 100%)' }}
                 aria-hidden="true"
               />
+              {/* Glifo discreto en la esquina */}
+              <img
+                src="/brand/glifo-fragsa-white.png"
+                alt=""
+                aria-hidden="true"
+                loading="lazy"
+                decoding="async"
+                className="hidden lg:block absolute right-6 bottom-6 w-16 opacity-30"
+              />
             </div>
-            {/* Glifo discreto en la esquina */}
+
+            {/* Overflowing duplicate — buildings/cranes "break out" above the frame */}
             <img
-              src="/brand/glifo-fragsa-white.png"
+              src="/brand/hero-fragsa-1200w.webp"
               alt=""
               aria-hidden="true"
-              loading="lazy"
               decoding="async"
-              className="hidden lg:block absolute right-8 bottom-8 w-20 opacity-30"
+              loading="lazy"
+              className="pointer-events-none absolute select-none left-[5%] top-0 w-[95%] lg:left-[6%] lg:w-[88%] xl:left-[10%] xl:w-[80%]"
+              style={{
+                filter: 'grayscale(100%) contrast(1.15) drop-shadow(0 14px 20px rgba(11,17,30,0.28))',
+                clipPath: 'inset(0 0 66% 0)',
+                WebkitMaskImage: 'linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 55%, rgba(0,0,0,0) 100%)',
+                maskImage: 'linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 55%, rgba(0,0,0,0) 100%)',
+                transform: 'translateY(-32%)',
+              }}
             />
           </div>
         </div>
