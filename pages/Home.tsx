@@ -50,7 +50,12 @@ const Home: React.FC = () => {
           {/* TEXT SIDE */}
           <div className="lg:col-span-7 flex flex-col justify-center pt-16 pb-8 lg:py-0 px-6 md:px-10 lg:pl-12 xl:pl-20 lg:pr-12 order-2 lg:order-1 relative">
             <Reveal>
-              <Eyebrow className="mb-4">FRAGSA · Grupo Integral</Eyebrow>
+              <img
+                src="/brand/logo-fragsa-color.png"
+                alt="FRAGSA — Grupo Integral"
+                className="h-12 md:h-14 lg:h-16 w-auto mb-6"
+                decoding="async"
+              />
             </Reveal>
             <Reveal delay={120}>
               <h1 className="font-display font-extrabold uppercase tracking-[0.01em] text-[2rem] sm:text-5xl md:text-6xl lg:text-[4.25rem] xl:text-[5rem] leading-[0.98] text-fragsa-ink">
@@ -176,7 +181,7 @@ const Home: React.FC = () => {
           <Reveal>
             <SectionHeader
               eyebrow="02 · Servicios"
-              title="Cinco disciplinas, un solo responsable."
+              title="Cinco especialidades, un solo responsable."
               subtitle="Soluciones integrales respaldadas por la sinergia de nuestro grupo: desde ingeniería de valor hasta la operación de largo plazo."
             />
           </Reveal>
@@ -199,7 +204,7 @@ const Home: React.FC = () => {
           <Reveal>
             <SectionHeader
               eyebrow="03 · Proyectos"
-              title="Obra que habla por sí sola."
+              title="Obras que reflejan de nuestra experiencia y calidad."
               subtitle="Centros logísticos, naves industriales y parques que sostienen cadenas de valor completas."
             />
           </Reveal>
