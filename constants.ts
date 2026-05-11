@@ -321,13 +321,8 @@ export const CLIENTS: Client[] = [
   { name: 'Productos de Consumo' },
   { name: 'Pitico' },
   { name: 'GNC Live Well' },
-  { name: 'RAL' },
   { name: 'Ilusion Bowl' },
-  { name: 'Thompson Hotels' },
-  { name: 'RCO — Red de Carreteras de Occidente' },
-  { name: 'CAPUFE' },
   { name: 'Glanbia' },
-  { name: 'Grupo Carso' },
   { name: 'Scorpion' },
 ];
 

@@ -1,12 +1,10 @@
 import React from 'react';
 import Eyebrow from '../components/Eyebrow';
-import SectionHeader from '../components/SectionHeader';
-import GroupHex from '../components/GroupHex';
 import CoverageMap from '../components/CoverageMap';
 import Reveal from '../components/Reveal';
 import Counter from '../components/Counter';
 import TriangleBullet from '../components/TriangleBullet';
-import { GROUP_COMPANIES, COVERAGE_STATES } from '../constants';
+import { COVERAGE_STATES } from '../constants';
 
 const About: React.FC = () => {
   return (
@@ -40,10 +38,13 @@ const About: React.FC = () => {
           </div>
           <Reveal className="lg:col-span-7 flex flex-col gap-6" delay={240}>
             <p className="text-lg text-fragsa-graphite leading-relaxed">
-              FRAGSA Constructora se especializa en el diseño, construcción y comercialización de espacios industriales, respaldada por una trayectoria de más de 30 años en el mercado.
+              Fragsa Constructora se especializa en el diseño, construcción y comercialización de espacios industriales, respaldada por una trayectoria de más de 30 años en el mercado.
             </p>
             <p className="text-lg text-fragsa-graphite leading-relaxed">
-              Fundada en 1989 por el <strong className="text-fragsa-ink font-semibold">Arq. Francisco J. Guarro Aceves</strong>, nuestra empresa ha evolucionado hacia un modelo de gestión integral. Actualmente, consolidamos nuestra capacidad operativa a través del Grupo, integrado por JALIE-VALI, GEMCO y VIGASA, lo que nos permite abarcar con solvencia todas las etapas del proyecto: desde la planeación, diseño, gestión y la ejecución de obras de gran escala.
+              Fundada en 1989 por el <strong className="text-fragsa-ink font-semibold">Arq. Francisco J. Guarro Aceves</strong>, nuestra empresa ha evolucionado hacia un modelo de gestión integral.
+            </p>
+            <p className="text-lg text-fragsa-graphite leading-relaxed">
+              A lo largo de los años, hemos integrado servicios de planeación, diseño y desarrollo, abarcando desde remodelaciones de interiores hasta proyectos de gran escala.
             </p>
           </Reveal>
         </div>
@@ -79,31 +80,11 @@ const About: React.FC = () => {
         </div>
       </section>
 
-      {/* GRUPO */}
-      <section className="py-24 md:py-32 bg-fragsa-paper">
-        <div className="max-w-[1280px] mx-auto px-6 md:px-10">
-          <Reveal>
-            <SectionHeader
-              eyebrow="02 · Empresas que integran el Grupo"
-              title="Cuatro empresas, una sinergia operativa."
-              subtitle="Nuestro modelo de grupo nos permite abarcar con solvencia todas las etapas del proyecto, de la ingeniería al montaje final."
-            />
-          </Reveal>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-16">
-            {GROUP_COMPANIES.map((c, i) => (
-              <Reveal key={c.id} delay={i * 100}>
-                <GroupHex company={c} />
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* COBERTURA */}
       <section className="py-24 md:py-32 bg-fragsa-mist border-t border-fragsa-line">
         <div className="max-w-[1280px] mx-auto px-6 md:px-10 grid grid-cols-1 lg:grid-cols-12 gap-12">
           <div className="lg:col-span-4 flex flex-col gap-6">
-            <Reveal><Eyebrow>03 · Cobertura</Eyebrow></Reveal>
+            <Reveal><Eyebrow>02 · Cobertura</Eyebrow></Reveal>
             <Reveal delay={120}>
               <h2 className="font-display font-extrabold uppercase tracking-[0.02em] text-3xl md:text-4xl text-fragsa-ink leading-tight">
                 Presencia nacional.
