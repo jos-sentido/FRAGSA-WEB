@@ -44,64 +44,70 @@ const Home: React.FC = () => {
 
   return (
     <div>
-      {/* HERO */}
-      <section className="relative min-h-screen bg-fragsa-asphalt text-fragsa-paper overflow-hidden flex items-end pt-32 pb-20">
-        <div
-          ref={heroBgRef}
-          className="absolute left-0 right-0 opacity-40 will-change-transform"
-          style={{ top: '-15%', height: '130%' }}
-        >
-          <img
-            src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&fm=webp&w=1600&q=70"
-            srcSet="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&fm=webp&w=800&q=70 800w, https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&fm=webp&w=1600&q=70 1600w, https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&fm=webp&w=2400&q=75 2400w"
-            sizes="100vw"
-            alt=""
-            aria-hidden="true"
-            decoding="async"
-            {...({ fetchpriority: 'high' } as any)}
-            className="w-full h-full object-cover"
-            style={{ filter: 'grayscale(100%) contrast(1.1)' }}
-          />
-          <div
-            className="absolute inset-0"
-            style={{ backgroundImage: 'linear-gradient(135deg, rgba(27,43,74,0.65) 0%, rgba(17,20,24,0.92) 100%)' }}
-            aria-hidden="true"
-          />
-        </div>
-        <img
-          src="/brand/glifo-fragsa-white.png"
-          alt=""
-          aria-hidden="true"
-          loading="lazy"
-          decoding="async"
-          className="absolute -right-10 -top-10 md:right-10 md:top-24 w-72 md:w-[28rem] opacity-[0.06]"
-        />
-
-        <div className="relative z-10 max-w-[1280px] mx-auto px-6 md:px-10 w-full">
-          <Reveal>
-            <Eyebrow light className="mb-8">FRAGSA · Grupo Integral</Eyebrow>
-          </Reveal>
-          <Reveal delay={120}>
-            <h1 className="font-display font-extrabold uppercase tracking-[0.02em] text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.02] max-w-[16ch] text-fragsa-paper">
-              Soluciones integrales en construcción
-            </h1>
-          </Reveal>
-          <Reveal delay={240}>
-            <p className="text-base md:text-lg text-fragsa-paper/80 max-w-[55ch] mt-8 leading-relaxed">
-              Más de 30 años diseñando, construyendo y comercializando espacios industriales, comerciales y residenciales en México.
-            </p>
-          </Reveal>
-          <Reveal delay={360}>
-            <div className="flex flex-col sm:flex-row gap-4 mt-10">
-              <Button to="/proyectos" variant="light-primary" withArrow>Ver proyectos</Button>
-              <Button to="/contacto" variant="light-secondary">Contáctanos</Button>
+      {/* HERO — split layout inspired by the FRAGSA cover */}
+      <section className="relative bg-fragsa-paper overflow-hidden">
+        <div className="grid grid-cols-1 lg:grid-cols-12 lg:h-[calc(100vh-72px)] lg:min-h-[560px] lg:max-h-[760px]">
+          {/* TEXT SIDE */}
+          <div className="lg:col-span-7 flex flex-col justify-center pt-16 pb-8 lg:py-0 px-6 md:px-10 lg:pl-12 xl:pl-20 lg:pr-12 order-2 lg:order-1 relative">
+            <Reveal>
+              <Eyebrow className="mb-4">FRAGSA · Grupo Integral</Eyebrow>
+            </Reveal>
+            <Reveal delay={120}>
+              <h1 className="font-display font-extrabold uppercase tracking-[0.01em] text-[2rem] sm:text-5xl md:text-6xl lg:text-[4.25rem] xl:text-[5rem] leading-[0.98] text-fragsa-ink">
+                Soluciones <br />
+                integrales <br />
+                <span className="text-fragsa-navy">en construcción.</span>
+              </h1>
+            </Reveal>
+            <Reveal delay={240}>
+              <p className="text-sm md:text-lg text-fragsa-graphite max-w-[44ch] mt-4 lg:mt-6 leading-relaxed">
+                Más de 30 años diseñando, construyendo y comercializando espacios industriales, comerciales y residenciales en México.
+              </p>
+            </Reveal>
+            <Reveal delay={360}>
+              <div className="flex flex-col sm:flex-row gap-3 mt-6 lg:mt-8">
+                <Button to="/proyectos" variant="primary" withArrow>Ver proyectos</Button>
+                <Button to="/contacto" variant="secondary">Contáctanos</Button>
+              </div>
+            </Reveal>
+            <div className="hidden lg:block absolute bottom-6 left-12 xl:left-20 text-[10px] uppercase tracking-widest-xl text-fragsa-steel">
+              Est. 1989 · Guadalajara, México
             </div>
-          </Reveal>
-        </div>
+          </div>
 
-        <div className="absolute left-6 md:left-10 bottom-6 text-[10px] uppercase tracking-widest-xl text-fragsa-paper/50">
-          Est. 1989 · Guadalajara, México
+          {/* IMAGE SIDE */}
+          <div className="lg:col-span-5 relative bg-fragsa-asphalt order-1 lg:order-2 h-[28vh] min-h-[200px] max-h-[260px] lg:h-auto lg:min-h-0 lg:max-h-none">
+            <div ref={heroBgRef} className="absolute inset-0 will-change-transform">
+              <img
+                src="/brand/hero-fragsa-1200w.webp"
+                srcSet="/brand/hero-fragsa-800w.webp 800w, /brand/hero-fragsa-1200w.webp 1200w, /brand/hero-fragsa-1600w.webp 1600w"
+                sizes="(min-width: 1024px) 60vw, 100vw"
+                alt=""
+                aria-hidden="true"
+                decoding="async"
+                {...({ fetchpriority: 'high' } as any)}
+                className="w-full h-full object-cover"
+                style={{ filter: 'grayscale(100%) contrast(1.08)' }}
+              />
+              <div
+                className="absolute inset-0"
+                style={{ backgroundImage: 'linear-gradient(180deg, rgba(255,255,255,0) 40%, rgba(27,43,74,0.25) 100%)' }}
+                aria-hidden="true"
+              />
+            </div>
+            {/* Glifo discreto en la esquina */}
+            <img
+              src="/brand/glifo-fragsa-white.png"
+              alt=""
+              aria-hidden="true"
+              loading="lazy"
+              decoding="async"
+              className="hidden lg:block absolute right-8 bottom-8 w-20 opacity-30"
+            />
+          </div>
         </div>
+        {/* Línea inferior tipo "barra" del PDF */}
+        <div className="h-1.5 bg-fragsa-navy" aria-hidden="true" />
       </section>
 
       {/* QUIÉNES SOMOS */}
