@@ -13,6 +13,7 @@ export interface Project {
   scope?: string;
   clientGroup?: string;
   imageUrl?: string;
+  images?: string[];     // galería de fotos (lightbox)
 }
 
 export interface ServiceItem {

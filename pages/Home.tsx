@@ -1,10 +1,10 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import Eyebrow from '../components/Eyebrow';
 import SectionHeader from '../components/SectionHeader';
 import StatBlock from '../components/StatBlock';
-import ProjectCard from '../components/ProjectCard';
+import FeaturedProjectCard from '../components/FeaturedProjectCard';
 import ServiceBlock from '../components/ServiceBlock';
 import ClientsGrid from '../components/ClientsGrid';
 import Reveal from '../components/Reveal';
@@ -12,10 +12,11 @@ import Button from '../components/Button';
 import { PROJECTS, SERVICES, STATS_HOME, CLIENTS } from '../constants';
 
 const Home: React.FC = () => {
+  // Un proyecto por giro (industrial · comercial · residencial), todos con galería.
   const featured = [
-    PROJECTS.find(p => p.id === 1)!,
-    PROJECTS.find(p => p.id === 2)!,
-    PROJECTS.find(p => p.id === 4)!,
+    PROJECTS.find(p => p.id === 4)!,   // Centro Logístico PCZ · SLP (Industrial)
+    PROJECTS.find(p => p.id === 9)!,   // Strike 22 (Comercial)
+    PROJECTS.find(p => p.id === 13)!,  // Casa MT (Residencial)
   ];
 
   // Parallax: subtle vertical translation of hero background on scroll.
@@ -204,14 +205,14 @@ const Home: React.FC = () => {
           <Reveal>
             <SectionHeader
               eyebrow="03 · Proyectos"
-              title="Obras que reflejan de nuestra experiencia y calidad."
-              subtitle="Centros logísticos, naves industriales y parques que sostienen cadenas de valor completas."
+              title="Obras que reflejan nuestra experiencia y calidad."
+              subtitle="Proyectos industriales, comerciales y residenciales. Da clic en cada proyecto para ver su galería."
             />
           </Reveal>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16">
             {featured.map((p, i) => (
               <Reveal key={p.id} delay={i * 100} scale>
-                <ProjectCard project={p} featured />
+                <FeaturedProjectCard project={p} />
               </Reveal>
             ))}
           </div>

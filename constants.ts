@@ -158,6 +158,11 @@ export const SERVICES: ServiceItem[] = [
   },
 ];
 
+// Construye las rutas de galería /projects/<slug>/NN.webp generadas por
+// scripts/process-projects.mjs (la primera imagen es la portada / imageUrl).
+const gallery = (slug: string, count: number): string[] =>
+  Array.from({ length: count }, (_, i) => `/projects/${slug}/${String(i + 1).padStart(2, '0')}.webp`);
+
 export const PROJECTS: Project[] = [
   // INDUSTRIAL
   {
@@ -181,6 +186,7 @@ export const PROJECTS: Project[] = [
     amountMXN: 180461446.49,
     scope: 'Desarrollo de parque industrial con obra civil e infraestructura.',
     imageUrl: '/projects/parque-industrial-chihuahua.webp',
+    images: gallery('parque-industrial-chihuahua', 2),
   },
   {
     id: 3,
@@ -203,6 +209,7 @@ export const PROJECTS: Project[] = [
     amountMXN: 171316200.34,
     scope: 'Centro logístico entregado con infraestructura completa de operación.',
     imageUrl: '/projects/centro-logistico-slp.webp',
+    images: gallery('centro-logistico-slp', 7),
   },
   {
     id: 5,
@@ -214,6 +221,7 @@ export const PROJECTS: Project[] = [
     amountMXN: 165941340.12,
     scope: 'Construcción en ejecución de centro logístico regional.',
     imageUrl: '/projects/centro-logistico-oaxaca.webp',
+    images: gallery('centro-logistico-oaxaca', 3),
   },
   {
     id: 6,
@@ -236,6 +244,7 @@ export const PROJECTS: Project[] = [
     amountMXN: 76391939.2,
     scope: 'Dos naves industriales del complejo Elite 8 de Julio.',
     imageUrl: '/projects/v6-v7-elite.webp',
+    images: gallery('v6-v7-elite', 3),
   },
   {
     id: 8,
@@ -247,6 +256,7 @@ export const PROJECTS: Project[] = [
     amountMXN: 56159219.2,
     scope: 'Nave industrial del complejo Elite 8 de Julio.',
     imageUrl: '/projects/v5-elite.webp',
+    images: gallery('v5-elite', 1),
   },
   // COMERCIAL
   {
@@ -260,6 +270,7 @@ export const PROJECTS: Project[] = [
     amountMXN: null,
     scope: 'Diseño y construcción de boliche.',
     imageUrl: '/projects/strike-22.webp',
+    images: gallery('strike-22', 9),
   },
   {
     id: 10,
@@ -272,6 +283,7 @@ export const PROJECTS: Project[] = [
     amountMXN: 328690.2,
     scope: 'Adecuaciones tipo retail y entretenimiento en múltiples plazas.',
     imageUrl: '/projects/ilusion-bowl.webp',
+    images: gallery('ilusion-bowl', 10),
   },
   {
     id: 11,
@@ -284,6 +296,7 @@ export const PROJECTS: Project[] = [
     amountMXN: null,
     scope: 'Diseño de boliche de alta gama.',
     imageUrl: '/projects/uncommon-society.webp',
+    images: gallery('uncommon-society', 6),
   },
   {
     id: 12,
@@ -296,6 +309,7 @@ export const PROJECTS: Project[] = [
     amountMXN: null,
     scope: 'Diseño y construcción de vinatería boutique.',
     imageUrl: '/projects/vino-sin-prisa.webp',
+    images: gallery('vino-sin-prisa', 6),
   },
   // RESIDENCIAL
   {
@@ -308,6 +322,7 @@ export const PROJECTS: Project[] = [
     amountMXN: null,
     scope: 'Residencia de autor desarrollada integralmente.',
     imageUrl: '/projects/casa-mt.webp',
+    images: gallery('casa-mt', 12),
   },
 ];
 

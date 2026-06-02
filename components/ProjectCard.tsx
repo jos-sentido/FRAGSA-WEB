@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Project } from '../types';
 import { formatM2, formatMXN } from '../constants';
-import { ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight, Images } from 'lucide-react';
+import Lightbox from './Lightbox';
 
 interface ProjectCardProps {
   project: Project;
@@ -11,10 +12,19 @@ interface ProjectCardProps {
 const ProjectCard: React.FC<ProjectCardProps> = ({ project, featured = false }) => {
   const inProgress = ['En ejecución', 'En proceso'].includes(project.year);
   const placeholderBg = 'linear-gradient(135deg, #E5E7EB 0%, #D9DCE1 50%, #C3C6CB 100%)';
+  const gallery = project.images ?? [];
+  const hasGallery = gallery.length > 0;
+  const [open, setOpen] = useState(false);
 
   return (
     <article className="group flex flex-col bg-fragsa-paper border border-fragsa-line hover:border-fragsa-navy transition-all duration-500 hover:-translate-y-1">
-      <div className="relative overflow-hidden aspect-[4/3] bg-fragsa-mist">
+      <button
+        type="button"
+        onClick={() => hasGallery && setOpen(true)}
+        disabled={!hasGallery}
+        aria-label={hasGallery ? `Ver galería de ${project.title} (${gallery.length} ${gallery.length === 1 ? 'foto' : 'fotos'})` : project.title}
+        className={`relative block w-full overflow-hidden aspect-[4/3] bg-fragsa-mist text-left ${hasGallery ? 'cursor-pointer' : 'cursor-default'}`}
+      >
         {project.imageUrl ? (
           <img
             src={project.imageUrl}
@@ -32,10 +42,16 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, featured = false }) 
             {project.year}
           </span>
         )}
-        <div className="absolute top-4 right-4 w-10 h-10 rounded-full border border-fragsa-paper/60 bg-fragsa-ink/20 backdrop-blur-sm flex items-center justify-center text-fragsa-paper opacity-0 group-hover:opacity-100 transition-opacity">
+        {hasGallery && (
+          <span className="absolute bottom-4 left-4 flex items-center gap-1.5 bg-fragsa-ink/55 backdrop-blur-sm text-fragsa-paper text-[10px] uppercase tracking-widest-xl font-semibold px-2.5 py-1.5 opacity-90">
+            <Images size={13} strokeWidth={1.75} />
+            {gallery.length} {gallery.length === 1 ? 'foto' : 'fotos'}
+          </span>
+        )}
+        <span className="absolute top-4 right-4 w-10 h-10 rounded-full border border-fragsa-paper/60 bg-fragsa-ink/20 backdrop-blur-sm flex items-center justify-center text-fragsa-paper opacity-0 group-hover:opacity-100 transition-opacity">
           <ArrowUpRight size={16} strokeWidth={1.5} />
-        </div>
-      </div>
+        </span>
+      </button>
 
       <div className={`flex flex-col gap-3 p-6 md:p-8 ${featured ? 'md:gap-4' : ''}`}>
         <div className="flex items-center gap-3">
@@ -77,6 +93,15 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, featured = false }) 
           )}
         </div>
       </div>
+
+      {open && (
+        <Lightbox
+          images={gallery}
+          title={project.title}
+          category={project.category}
+          onClose={() => setOpen(false)}
+        />
+      )}
     </article>
   );
 };
