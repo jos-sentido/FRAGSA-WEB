@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Project } from '../types';
-import { formatM2, formatMXN } from '../constants';
 import { ArrowUpRight, Images } from 'lucide-react';
 import Lightbox from './Lightbox';
 
@@ -75,23 +74,6 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, featured = false }) 
         <p className="text-sm text-fragsa-graphite leading-relaxed">
           {project.location}
         </p>
-
-        <div className="flex items-end justify-between pt-4 mt-2 border-t border-fragsa-line">
-          <div>
-            <div className="text-[10px] uppercase tracking-widest-xl text-fragsa-steel">Dimensión</div>
-            <div className="font-display font-semibold text-base text-fragsa-ink tabular-nums mt-1">
-              {formatM2(project.sizeM2)}
-            </div>
-          </div>
-          {project.amountMXN !== null && (
-            <div className="text-right">
-              <div className="text-[10px] uppercase tracking-widest-xl text-fragsa-steel">Inversión</div>
-              <div className="font-display font-semibold text-base text-fragsa-navy tabular-nums mt-1">
-                {formatMXN(project.amountMXN)}
-              </div>
-            </div>
-          )}
-        </div>
       </div>
 
       {open && (
