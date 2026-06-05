@@ -4,6 +4,7 @@ import { MX_STATES, MX_CENTROIDS, MX_VIEWBOX } from './mexicoMapData';
 const ACTIVE_STATES: string[] = [
   'MX-BCN', 'MX-SON', 'MX-CHH', 'MX-NLE', 'MX-SLP', 'MX-GUA', 'MX-QUE',
   'MX-JAL', 'MX-MIC', 'MX-MEX', 'MX-CMX', 'MX-PUE', 'MX-VER', 'MX-OAX',
+  'MX-COL', 'MX-NAY', 'MX-SIN', 'MX-ZAC', 'MX-GRO', 'MX-ROO', 'MX-AGU', 'MX-TAB',
 ];
 
 const ACTIVE_SET = new Set(ACTIVE_STATES);

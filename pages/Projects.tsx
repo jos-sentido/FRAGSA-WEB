@@ -57,9 +57,6 @@ const Projects: React.FC = () => {
               )}
             </button>
           ))}
-          <span className="ml-auto text-[11px] uppercase tracking-widest-xl text-fragsa-steel">
-            {filtered.length} proyectos
-          </span>
         </div>
       </section>
 

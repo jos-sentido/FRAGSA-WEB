@@ -25,7 +25,7 @@ export const SIBLING_SITES: SiblingSite[] = [
   { name: 'FRAGSA',     descriptor: 'Constructora',           url: 'https://www.fragsa.com.mx' },
   { name: 'GEMCO',      descriptor: 'Construcción civil',     url: 'https://www.gemco-construccion.com' },
   { name: 'VIGASA',     descriptor: 'Estructura metálica',    url: 'https://www.vigasa.mx' },
-  { name: 'JALIE-VALI', descriptor: 'Obra civil',             url: 'https://www.jalievali.com' },
+  { name: 'JALIE-VALI', descriptor: 'Instalaciones e infraestructura vial', url: 'https://www.jalievali.com' },
 ];
 
 export const GROUP_COMPANIES: GroupCompany[] = [
@@ -53,8 +53,8 @@ export const GROUP_COMPANIES: GroupCompany[] = [
   {
     id: 'jalievali',
     name: 'JALIE-VALI',
-    descriptor: 'Constructora',
-    description: 'Obra civil, infraestructura, edificación y movimiento de tierras.',
+    descriptor: 'Instalaciones e infraestructura vial',
+    description: 'Instalaciones e infraestructura vial: urbanización, pavimentación y obra de servicios.',
     url: 'https://www.jalievali.com',
   },
 ];
@@ -74,6 +74,14 @@ export const COVERAGE_STATES: CoverageState[] = [
   { code: 'PUE', name: 'Puebla' },
   { code: 'GTO', name: 'Guanajuato' },
   { code: 'VER', name: 'Veracruz' },
+  { code: 'COL', name: 'Colima' },
+  { code: 'NAY', name: 'Nayarit' },
+  { code: 'SIN', name: 'Sinaloa' },
+  { code: 'ZAC', name: 'Zacatecas' },
+  { code: 'GRO', name: 'Guerrero' },
+  { code: 'ROO', name: 'Quintana Roo' },
+  { code: 'AGU', name: 'Aguascalientes' },
+  { code: 'TAB', name: 'Tabasco' },
 ];
 
 export const SERVICES: ServiceItem[] = [
@@ -377,7 +385,7 @@ export const MACHINERY: MachineryCategory[] = [
 export const STATS_HOME = [
   { figure: '30+', label: 'años de trayectoria' },
   { figure: '04',  label: 'empresas del grupo' },
-  { figure: '14+', label: 'estados con cobertura' },
+  { figure: '22+', label: 'estados con cobertura' },
   { figure: '300+', label: 'sucursales colaboradas' },
 ];
 

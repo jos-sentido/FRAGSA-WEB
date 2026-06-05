@@ -164,7 +164,7 @@ const Contact: React.FC = () => {
                 Operación nacional.
               </h2>
               <p className="text-base text-fragsa-graphite mt-4 leading-relaxed">
-                Ejecutamos proyectos en 14+ estados de la república, con oficinas base en Guadalajara y logística coordinada desde el grupo.
+                Ejecutamos proyectos en 22+ estados de la república, con oficinas base en Guadalajara y logística coordinada desde el grupo.
               </p>
             </Reveal>
           </div>

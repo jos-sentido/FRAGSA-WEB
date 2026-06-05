@@ -92,7 +92,7 @@ const About: React.FC = () => {
             </Reveal>
             <Reveal delay={240}>
               <div className="flex items-baseline gap-4">
-                <span className="font-display font-extrabold text-6xl md:text-7xl text-fragsa-navy tabular-nums"><Counter value="14+" /></span>
+                <span className="font-display font-extrabold text-6xl md:text-7xl text-fragsa-navy tabular-nums"><Counter value="22+" /></span>
                 <span className="text-[11px] uppercase tracking-widest-xl text-fragsa-steel">Estados con obra activa</span>
               </div>
             </Reveal>
