@@ -107,9 +107,34 @@ const ClientsGrid: React.FC<ClientsGridProps> = ({ clients }) => {
               {/* Crosshair en la esquina inferior-derecha (intersección de líneas) */}
               <RegistrationMark className="bottom-1 right-1 w-2.5 h-2.5" />
 
-              <span className="relative font-display font-semibold text-xs md:text-sm uppercase tracking-widest-xl text-fragsa-graphite group-hover:text-fragsa-navy transition-colors">
-                {c.name}
-              </span>
+              {c.logo ? (
+                <img
+                  src={c.logo}
+                  alt={c.name}
+                  className="relative max-w-[72%] object-contain"
+                  style={{
+                    maxHeight: `${c.logoMaxH ?? 64}px`,
+                    filter: 'grayscale(1) contrast(1.1)',
+                    mixBlendMode: 'multiply',
+                    opacity: 0.75,
+                    transition: 'filter 0.35s ease, opacity 0.35s ease',
+                  }}
+                  onMouseEnter={e => {
+                    const img = e.currentTarget as HTMLImageElement;
+                    img.style.filter = 'grayscale(0) contrast(1)';
+                    img.style.opacity = '1';
+                  }}
+                  onMouseLeave={e => {
+                    const img = e.currentTarget as HTMLImageElement;
+                    img.style.filter = 'grayscale(1) contrast(1.1)';
+                    img.style.opacity = '0.75';
+                  }}
+                />
+              ) : (
+                <span className="relative font-display font-semibold text-xs md:text-sm uppercase tracking-widest-xl text-fragsa-graphite group-hover:text-fragsa-navy transition-colors">
+                  {c.name}
+                </span>
+              )}
             </div>
           );
         })}

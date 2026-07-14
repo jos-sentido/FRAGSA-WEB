@@ -9,9 +9,11 @@ const PROJECT_TYPES = ['Industrial', 'Comercial', 'Residencial', 'Consultoría',
 
 const Contact: React.FC = () => {
   const [form, setForm] = useState({
-    name: '', company: '', email: '', phone: '', type: 'Industrial', message: '', privacy: false,
+    name: '', company: '', email: '', phone: '', type: 'Industrial', message: '', privacy: false, website: '',
   });
   const [sent, setSent] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const target = e.target;
@@ -19,11 +21,30 @@ const Contact: React.FC = () => {
     setForm({ ...form, [target.name]: value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // eslint-disable-next-line no-console
-    console.log('contact submit →', form);
-    setSent(true);
+    setError(null);
+    setSending(true);
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      });
+      const data = await res.json().catch(() => ({ ok: false }));
+      if (!res.ok || !data.ok) {
+        throw new Error(data.error || 'No se pudo enviar el mensaje.');
+      }
+      setSent(true);
+    } catch (err) {
+      setError(
+        err instanceof Error && err.message
+          ? `${err.message} Si persiste, escríbenos a ${CONTACT.email}.`
+          : `No se pudo enviar. Intenta de nuevo o escríbenos a ${CONTACT.email}.`,
+      );
+    } finally {
+      setSending(false);
+    }
   };
 
   return (
@@ -112,13 +133,19 @@ const Contact: React.FC = () => {
                   <p className="text-sm text-fragsa-graphite max-w-[45ch]">
                     Gracias por escribirnos, {form.name || 'un colaborador'} te contactará en breve desde {CONTACT.email}.
                   </p>
-                  <button onClick={() => { setSent(false); setForm({ name:'', company:'', email:'', phone:'', type:'Industrial', message:'', privacy:false }); }}
+                  <button onClick={() => { setSent(false); setForm({ name:'', company:'', email:'', phone:'', type:'Industrial', message:'', privacy:false, website:'' }); }}
                           className="mt-4 text-[11px] uppercase tracking-widest-xl font-semibold text-fragsa-navy hover:text-fragsa-blue">
                     Enviar otro mensaje →
                   </button>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {/* Honeypot anti-spam: oculto para humanos, los bots lo llenan */}
+                  <input
+                    type="text" name="website" tabIndex={-1} autoComplete="off"
+                    value={form.website} onChange={handleChange}
+                    className="hidden" aria-hidden="true"
+                  />
                   <Field label="Nombre *" name="name" value={form.name} onChange={handleChange} required />
                   <Field label="Empresa" name="company" value={form.company} onChange={handleChange} />
                   <Field label="Correo electrónico *" name="email" type="email" value={form.email} onChange={handleChange} required />
@@ -140,11 +167,14 @@ const Contact: React.FC = () => {
                            className="mt-1 accent-fragsa-navy" />
                     <span>Acepto el aviso de privacidad y el tratamiento de mis datos para fines de contacto comercial.</span>
                   </label>
+                  {error && (
+                    <p className="md:col-span-2 text-sm text-red-600" role="alert">{error}</p>
+                  )}
                   <div className="md:col-span-2 pt-4">
-                    <button type="submit"
-                            className="inline-flex items-center justify-center gap-3 px-7 py-4 text-[11px] uppercase tracking-widest-xl font-semibold bg-fragsa-navy text-fragsa-paper hover:bg-fragsa-blue transition-colors">
-                      Enviar mensaje
-                      <span aria-hidden="true">→</span>
+                    <button type="submit" disabled={sending}
+                            className="inline-flex items-center justify-center gap-3 px-7 py-4 text-[11px] uppercase tracking-widest-xl font-semibold bg-fragsa-navy text-fragsa-paper hover:bg-fragsa-blue transition-colors disabled:opacity-60 disabled:cursor-not-allowed">
+                      {sending ? 'Enviando…' : 'Enviar mensaje'}
+                      {!sending && <span aria-hidden="true">→</span>}
                     </button>
                   </div>
                 </form>

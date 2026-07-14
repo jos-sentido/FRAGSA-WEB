@@ -41,6 +41,8 @@ export interface CoverageState {
 export interface Client {
   name: string;
   category?: string;
+  logo?: string;
+  logoMaxH?: number;
 }
 
 export interface MachineryCategory {

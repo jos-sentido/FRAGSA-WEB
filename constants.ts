@@ -174,40 +174,6 @@ const gallery = (slug: string, count: number): string[] =>
 export const PROJECTS: Project[] = [
   // INDUSTRIAL
   {
-    id: 1,
-    title: 'Centro Logístico PCZ · Teoloyucan',
-    category: 'Industrial',
-    location: 'Teoloyucan, Estado de México',
-    year: '2026',
-    sizeM2: 40400,
-    amountMXN: 371200000,
-    scope: 'Construcción integral de centro logístico de gran escala.',
-    imageUrl: '/projects/centro-logistico-teoloyucan.webp',
-  },
-  {
-    id: 2,
-    title: 'Parque Industrial · Chihuahua',
-    category: 'Industrial',
-    location: 'Chihuahua, Chihuahua',
-    year: 'En proceso',
-    sizeM2: 19363.01,
-    amountMXN: 180461446.49,
-    scope: 'Desarrollo de parque industrial con obra civil e infraestructura.',
-    imageUrl: '/projects/parque-industrial-chihuahua.webp',
-    images: gallery('parque-industrial-chihuahua', 2),
-  },
-  {
-    id: 3,
-    title: 'Centro Logístico PCZ · Chihuahua',
-    category: 'Industrial',
-    location: 'Chihuahua, Chihuahua',
-    year: '2026',
-    sizeM2: 17997.91,
-    amountMXN: 180070872.7,
-    scope: 'Construcción de centro logístico con patios de maniobra.',
-    imageUrl: '/projects/centro-logistico-chihuahua.webp',
-  },
-  {
     id: 4,
     title: 'Centro Logístico PCZ · SLP',
     category: 'Industrial',
@@ -341,12 +307,13 @@ export const STRATEGIC_COLLABORATIONS = [
 ];
 
 export const CLIENTS: Client[] = [
-  { name: 'Productos de Consumo' },
-  { name: 'Pitico' },
-  { name: 'GNC Live Well' },
-  { name: 'Ilusion Bowl' },
-  { name: 'Glanbia' },
-  { name: 'Scorpion' },
+  { name: 'Productos de Consumo', logo: '/brand/clients/productos-de-consumo.jpg', logoMaxH: 72 },
+  { name: 'Piticó', logo: '/brand/clients/pitico.jpg', logoMaxH: 88 },
+  { name: 'GNC Live Well', logo: '/brand/clients/gnc.jpg', logoMaxH: 60 },
+  { name: 'Ilusion Bowl', logo: '/brand/clients/ilusion-bowl.jpg', logoMaxH: 72 },
+  { name: 'Glanbia', logo: '/brand/clients/glanbia.jpg', logoMaxH: 52 },
+  { name: 'Scorpion', logo: '/brand/clients/scorpion.jpg', logoMaxH: 52 },
+  { name: 'UCD', logo: '/brand/clients/ucd.jpg', logoMaxH: 64 },
 ];
 
 export const MACHINERY: MachineryCategory[] = [
